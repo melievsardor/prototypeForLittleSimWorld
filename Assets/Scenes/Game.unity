@@ -36008,10 +36008,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 396309150}
   limitBounds: 1
-  left: -18
-  right: 22
-  bottom: -20
-  top: 13
+  left: -17.987799
+  right: 21.988033
+  bottom: -20.99929
+  top: 12.997004
 --- !u!1001 &2045786936
 PrefabInstance:
   m_ObjectHideFlags: 0
