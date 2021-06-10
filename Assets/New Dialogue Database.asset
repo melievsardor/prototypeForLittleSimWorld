@@ -546,7 +546,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: EventGuid
-        value: 
+        value: 0fa9a92d-a9bd-40a4-9701-974abc3777b9
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
