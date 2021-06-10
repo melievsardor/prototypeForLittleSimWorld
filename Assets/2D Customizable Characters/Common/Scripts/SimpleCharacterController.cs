@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-
 public class SimpleCharacterController : MonoBehaviour
 {
 
@@ -225,7 +224,7 @@ public class SimpleCharacterController : MonoBehaviour
 		// Store the interactble that was clicked on.
 		currentInteractable = interactable;
 
-		Debug.Log("rabbit click");
+		
 		// If the player is stopping at an interactable...
 		if (currentInteractable)
 		{

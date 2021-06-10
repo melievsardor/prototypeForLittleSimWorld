@@ -15,6 +15,8 @@ MonoBehaviour:
   conditions:
   - {fileID: 3560727092837817474}
   - {fileID: 2468064427407355656}
+  - {fileID: 7156973380768517046}
+  - {fileID: 4810941875370266904}
 --- !u!114 &2468064427407355656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,3 +47,33 @@ MonoBehaviour:
   description: PickedUpRabbit
   satisfied: 0
   hash: 1212108145
+--- !u!114 &4810941875370266904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c14b7cdc8cc6347b3a5d48d05c9c85, type: 3}
+  m_Name: HasCoin
+  m_EditorClassIdentifier: 
+  description: HasCoin
+  satisfied: 0
+  hash: 1129137663
+--- !u!114 &7156973380768517046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c14b7cdc8cc6347b3a5d48d05c9c85, type: 3}
+  m_Name: PickedUpCoin
+  m_EditorClassIdentifier: 
+  description: PickedUpCoin
+  satisfied: 0
+  hash: 514706441
