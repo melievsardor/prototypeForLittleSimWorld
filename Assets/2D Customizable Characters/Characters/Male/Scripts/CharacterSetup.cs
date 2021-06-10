@@ -23,7 +23,9 @@ public class CharacterSetup : MonoBehaviour {
 	public Sprite eyebrowShape;
 	public Color hairColor;
 	[Header("Headwear")]
-    public Sprite headwear;
+    public Sprite headwearDown;
+    public Sprite headwearSide;
+    public Sprite headwearUp;
     public Color headwearColor;
 	[Header("Shoulders")]
 	public Sprite leftShoulder;
@@ -108,8 +110,11 @@ public class CharacterSetup : MonoBehaviour {
                 hair = GetSpriteRendererBySlotName(cachedDownSpriteRenderers, "__hair slot").sprite;
                 facialHair = GetSpriteRendererBySlotName(cachedDownSpriteRenderers, "__facial hair slot").sprite;
 
-                headwear = GetSpriteRendererBySlotName(cachedDownSpriteRenderers, "__headwear slot").sprite;
-                headwearColor = GetSpriteRendererBySlotName(cachedDownSpriteRenderers, "__headwear slot").color;
+               // headwearDown = GetSpriteRendererBySlotName(cachedDownSpriteRenderers, "__headwearDown slot").sprite;
+               // headwearSide = GetSpriteRendererBySlotName(cachedDownSpriteRenderers, "__headwearSide slot").sprite;
+               // headwearUp = GetSpriteRendererBySlotName(cachedDownSpriteRenderers, "__headwearUp slot").sprite;
+
+               // headwearColor = GetSpriteRendererBySlotName(cachedDownSpriteRenderers, "__headwear slot").color;
 
                 rightShoulder = GetSpriteRendererBySlotName(cachedDownSpriteRenderers, "__right shoulder slot").sprite;
                 rightShoulderColor = GetSpriteRendererBySlotName(cachedDownSpriteRenderers, "__right shoulder slot").color;
@@ -167,6 +172,76 @@ public class CharacterSetup : MonoBehaviour {
             UpdateSprites(true);
         }
     }
+
+    public void UpdateHeadwear(bool updateColorOnly)
+    {
+        UpdateCachedSpriteRenderersForAllDirections();
+
+        UpdateHeadwearSprites(cachedDownSpriteRenderers, "down", updateColorOnly);
+        UpdateHeadwearSprites(cachedUpSpriteRenderers, "up", updateColorOnly);
+        if (rightDirection != leftDirection && rightDirection != null)
+        {
+            UpdateHeadwearSprites(cachedLeftSpriteRenderers, "side", updateColorOnly);
+            UpdateHeadwearSprites(cachedRightSpriteRenderers, "side", updateColorOnly);
+        }
+        else
+        {
+            UpdateHeadwearSprites(cachedLeftSpriteRenderers, "side", updateColorOnly);
+        }
+    }
+
+    private void UpdateHeadwearSprites(SpriteRenderer[] cachedSpriteRenderers, string direction, bool updateColorOnly)
+    {
+        if (cachedSpriteRenderers != null && cachedSpriteRenderers.Length > 0)
+        {
+            bool isMainDirection = direction == "down";
+            bool updateSprites = isMainDirection || !updateColorOnly;
+
+            SpriteRenderer headwearSlotSRDown = GetSpriteRendererBySlotName(cachedSpriteRenderers, "__headwearDown slot");
+            UpdateSprite(headwearSlotSRDown, headwearDown, headwearColor, direction, isMainDirection, updateSprites);
+
+            SpriteRenderer headwearSlotSRSide = GetSpriteRendererBySlotName(cachedSpriteRenderers, "__headwearSide slot");
+            UpdateSprite(headwearSlotSRSide, headwearSide, headwearColor, direction, isMainDirection, updateSprites);
+
+            SpriteRenderer headwearSlotSRUp = GetSpriteRendererBySlotName(cachedSpriteRenderers, "__headwearUp slot");
+            UpdateSprite(headwearSlotSRUp, headwearUp, headwearColor, direction, isMainDirection, updateSprites);
+
+        }
+    }
+
+    public void UpdateWeapon(bool updateColorOnly)
+    {
+        UpdateCachedSpriteRenderersForAllDirections();
+
+        UpdateWeaponSprites(cachedDownSpriteRenderers, "down", updateColorOnly);
+        UpdateWeaponSprites(cachedUpSpriteRenderers, "up", updateColorOnly);
+        if (rightDirection != leftDirection && rightDirection != null)
+        {
+            UpdateWeaponSprites(cachedLeftSpriteRenderers, "side", updateColorOnly);
+            UpdateWeaponSprites(cachedRightSpriteRenderers, "side", updateColorOnly);
+        }
+        else
+        {
+            UpdateWeaponSprites(cachedLeftSpriteRenderers, "side", updateColorOnly);
+        }
+    }
+
+    private void UpdateWeaponSprites(SpriteRenderer[] cachedSpriteRenderers, string direction, bool updateColorOnly)
+    {
+        if (cachedSpriteRenderers != null && cachedSpriteRenderers.Length > 0)
+        {
+            bool isMainDirection = direction == "down";
+            bool updateSprites = isMainDirection || !updateColorOnly;
+
+            SpriteRenderer swingWeaponSlotSR = GetSpriteRendererBySlotName(cachedSpriteRenderers, "__swing weapon slot");
+            UpdateSprite(swingWeaponSlotSR, swingWeapon, swingWeaponSlotSR.color, direction, isMainDirection, updateSprites);
+            SpriteRenderer thrustWeaponSlotSR = GetSpriteRendererBySlotName(cachedSpriteRenderers, "__thrust weapon slot");
+            UpdateSprite(thrustWeaponSlotSR, thrustWeapon, thrustWeaponSlotSR.color, direction, isMainDirection, updateSprites);
+            SpriteRenderer bowWeaponSlotSR = GetSpriteRendererBySlotName(cachedSpriteRenderers, "__bow weapon slot");
+            UpdateSprite(bowWeaponSlotSR, bowWeapon, bowWeaponSlotSR.color, direction, isMainDirection, updateSprites);
+        }
+    }
+
 
     public void UpdateSprites(bool updateColorOnly)
     {
@@ -245,8 +320,14 @@ public class CharacterSetup : MonoBehaviour {
             SpriteRenderer facialHairSlotSR = GetSpriteRendererBySlotName(cachedSpriteRenderers, "__facial hair slot");
             UpdateSprite(facialHairSlotSR, facialHair, hairColor, direction, isMainDirection, updateSprites);
 
-            SpriteRenderer headwearSlotSR = GetSpriteRendererBySlotName(cachedSpriteRenderers, "__headwear slot");
-            UpdateSprite(headwearSlotSR, headwear, headwearColor, direction, isMainDirection, updateSprites);
+            SpriteRenderer headwearSlotSRDown = GetSpriteRendererBySlotName(cachedSpriteRenderers, "__headwearDown slot");
+            UpdateSprite(headwearSlotSRDown, headwearDown, headwearColor, direction, isMainDirection, updateSprites);
+
+            SpriteRenderer headwearSlotSRSide = GetSpriteRendererBySlotName(cachedSpriteRenderers, "__headwearSide slot");
+            UpdateSprite(headwearSlotSRSide, headwearSide, headwearColor, direction, isMainDirection, updateSprites);
+
+            SpriteRenderer headwearSlotSRUp = GetSpriteRendererBySlotName(cachedSpriteRenderers, "__headwearUp slot");
+            UpdateSprite(headwearSlotSRUp, headwearUp, headwearColor, direction, isMainDirection, updateSprites);
 
             //right arm
             SpriteRenderer rightShoulderSlotSR = GetSpriteRendererBySlotName(cachedSpriteRenderers, "__right shoulder slot");
