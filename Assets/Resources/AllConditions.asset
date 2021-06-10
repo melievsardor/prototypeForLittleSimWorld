@@ -14,6 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditions:
   - {fileID: 3560727092837817474}
+  - {fileID: 2468064427407355656}
+--- !u!114 &2468064427407355656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c14b7cdc8cc6347b3a5d48d05c9c85, type: 3}
+  m_Name: PickUpDog
+  m_EditorClassIdentifier: 
+  description: PickUpDog
+  satisfied: 0
+  hash: 1585316097
 --- !u!114 &3560727092837817474
 MonoBehaviour:
   m_ObjectHideFlags: 0
