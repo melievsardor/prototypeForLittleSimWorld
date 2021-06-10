@@ -15,6 +15,8 @@ public class SimpleCharacterController : MonoBehaviour
 	public GameObject rightObject;
 	public GameObject downObject;
 
+	private Interactable currentInteractable;   // The interactable that is currently being headed towards.
+
 	Rigidbody2D rb;
 	Animator currentAnimator;
 
@@ -216,4 +218,25 @@ public class SimpleCharacterController : MonoBehaviour
 		// Smoothing out the movement
 		rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref currentVelocity, m_MovementSmoothing);
 	}
+
+	// This function is called by the EventTrigger on an Interactable, the Interactable component is passed into it.
+	public void OnInteractableClick(Interactable interactable)
+	{
+		// Store the interactble that was clicked on.
+		currentInteractable = interactable;
+
+		Debug.Log("rabbit click");
+		// If the player is stopping at an interactable...
+		if (currentInteractable)
+		{
+			// Interact with the interactable and then null it out so this interaction only happens once.
+			currentInteractable.Interact();
+			currentInteractable = null;
+
+		}
+
+	}
+
+
+
 }
